@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<script>
+	function checkDelet(num,mode){
+		if(confirm("정말삭제하시겟습니까?") == true){
+			location.href='message_delete.php?num='+num+'&mode='+mode+''
+		}
+	}
+</script>
 <html>
 <head> 
 <meta charset="utf-8">
@@ -61,7 +68,7 @@
 				<li><button onclick="location.href='message_box.php?mode=rv'">수신 쪽지함</button></li>
 				<li><button onclick="location.href='message_box.php?mode=send'">송신 쪽지함</button></li>
 				<li><button onclick="location.href='message_response_form.php?num=<?=$num?>'">답변 쪽지</button></li>
-				<li><button onclick="location.href='message_delete.php?num=<?=$num?>&mode=<?=$mode?>'">삭제</button></li>
+				<li><button onclick="checkDelet(<?=$num?>)">삭제</button></li>
 		</ul>
 	</div> <!-- message_box -->
 </section> 

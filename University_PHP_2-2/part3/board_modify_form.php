@@ -53,7 +53,7 @@
 				<li>
 					<span class="col1">이름 : </span>
 					<span class="col2"><?=$name?></span>
-				</li>		
+				</li>		2
 	    		<li>
 	    			<span class="col1">제목 : </span>
 	    			<span class="col2"><input name="subject" type="text" value="<?=$subject?>"></span>
@@ -66,7 +66,12 @@
 	    		</li>
 	    		<li>
 			        <span class="col1"> 첨부 파일 : </span>
-			        <span class="col2"><?=$file_name?></span>
+			        <span class="col2">
+						<input type="button" onclick="onclick=document.all.file.click()" value="파일 선택" style="width: 80px;">
+						<input type="file" id="file" name="upfile" value="파일선택"> 
+						<!--옛날파일명-->
+						<input type="text" readonly value="<?=$file_name?>" decora style="border:none; outline:none ">
+					</span>
 			    </li>
 	    	    </ul>
 	    	<ul class="buttons">

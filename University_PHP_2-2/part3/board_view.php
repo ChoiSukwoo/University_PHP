@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<script>
+	function checkDelet(num,page){
+		if(confirm("정말삭제하시겟습니까?") == true){
+			location.href='board_delete.php?num='+num+'&page='+page+'';
+		}
+	}
+</script>
 <html>
 <head> 
 <meta charset="utf-8">
@@ -66,7 +73,7 @@
 	    <ul class="buttons">
 				<li><button onclick="location.href='board_list.php?page=<?=$page?>'">목록</button></li>
 				<li><button onclick="location.href='board_modify_form.php?num=<?=$num?>&page=<?=$page?>'">수정</button></li>
-				<li><button onclick="location.href='board_delete.php?num=<?=$num?>&page=<?=$page?>'">삭제</button></li>
+				<li><button onclick="checkDelet(<?=$num?>,<?=$page?>)">삭제</button></li>
 				<li><button onclick="location.href='board_form.php'">글쓰기</button></li>
 		</ul>
 	</div> <!-- board_box -->
