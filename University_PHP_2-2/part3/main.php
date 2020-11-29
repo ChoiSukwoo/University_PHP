@@ -1,6 +1,4 @@
-        <div id="main_img_bar">
-            <img src="./img/main_img.png">
-        </div>
+
         <div id="main_content">
             <div id="latest">
                 <h4>최근 게시글(15장)</h4>

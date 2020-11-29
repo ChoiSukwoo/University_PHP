@@ -1,0 +1,191 @@
+.main{
+    width: 430px;
+    height: 100px;
+    font-size: 16px;
+    border : 1px solid gray;
+    margin-bottom: 8px;
+    border-radius: 10px;
+}
+
+.main_img{
+    width : 69px ; 
+    height : 92px; 
+    margin:4px ;
+    float: left;
+}
+
+.main_box1{
+    width: 350px;
+    height: 85px;
+    font-size: 16px;
+    padding-top: 15px;
+    float: left;
+}
+.main_title{
+    width : 240px ; 
+    height : 40px; 
+    margin:4px ;
+    float: left;
+    word-break:break-all;
+}
+
+
+.main_rank{
+    width : 40px ; 
+    height : 18px; 
+    margin:4px ;
+    float: left;
+    word-break:break-all;
+}
+
+.main_rankUp{
+    width : 45px ; 
+    height : 18px; 
+    margin:4px ;
+    float: left;
+    word-break:break-all;
+    color:red
+}
+
+.main_rankdown{
+    width : 45px ; 
+    height : 18px; 
+    margin:4px ;
+    float: left;
+    word-break:break-all;
+    color:blue
+}
+
+.main_rankSame{
+    width : 45px ; 
+    height : 18px; 
+    margin:4px ;
+    float: left;
+    word-break:break-all;
+}
+
+
+.main_new{
+    width : 62px ; 
+    height : 18px; 
+    margin-left:4px ;
+    float: left;
+    word-break:break-all;
+    border: 2px solid #285e8e;
+    background-color: #367fa9;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bolder;
+    color: white;
+}
+.main_audiCnt{
+    width : 292px ; 
+    height : 20px; 
+    margin-left:4px ;
+    float: left;
+    word-break:break-all;
+    font-size: 15px;
+}
+.main_audiChange{
+    width : 292px ; 
+    height : 20px; 
+    margin-left:4px ;
+    float: left;
+    word-break:break-all;
+    font-size: 12px;
+    color: gray;
+}
+
+
+.movielist{
+    width: 186px;
+    height: 316px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.movielist_img{
+    width : 90px ; 
+    height : 120px; 
+    margin:4px ;
+    float: left;
+}
+
+.movielist_title{
+    width : 178px ; 
+    height : 45px; 
+    margin:4px ;
+    float: left;
+    font-size: 20px;
+}
+
+.movielist_rank{
+    width : 74px ; 
+    height : 23px; 
+    margin:4px ;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.movielist_rankUp{
+    width : 45px ; 
+    height : 18px; 
+    margin:4px ;
+    float: left;
+    word-break:break-all;
+    color:red
+}
+
+.movielist_rankdown{
+    width : 45px ; 
+    height : 18px; 
+    margin:4px ;
+    float: left;
+    word-break:break-all;
+    color:blue
+}
+
+.movielist_rankSame{
+    width : 45px ; 
+    height : 18px; 
+    margin:4px ;
+    float: left;
+    word-break:break-all;
+}
+
+
+.movielist_new{
+    width : 74px ; 
+    height : 18px; 
+    margin-left:4px ;
+    float: left;
+    word-break:break-all;
+    border: 2px solid #285e8e;
+    background-color: #367fa9;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bolder;
+    color: white;
+}
+.movielist_audiCnt{
+    width : 178px ; 
+    height : 20px; 
+    margin-left:4px ;
+    float: left;
+    word-break:break-all;
+    font-size: 15px;
+}
+.movielist_audiChange{
+    width : 178px ; 
+    height : 20px; 
+    margin-left:4px ;
+    float: left;
+    word-break:break-all;
+    font-size: 12px;
+    color: gray;
+}

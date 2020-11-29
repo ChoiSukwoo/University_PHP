@@ -12,9 +12,7 @@
     	<?php include "header.php";?>
     </header>
 	<section>
-		<div id="main_img_bar">
-            <img src="./img/main_img.png">
-        </div>
+
         <div id="main_content">
       		<div id="login_box">
 	    		<div id="login_title">

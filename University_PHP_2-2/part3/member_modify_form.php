@@ -27,9 +27,7 @@
     mysqli_close($con);
 ?>
 	<section>
-		<div id="main_img_bar">
-            <img src="./img/main_img.png">
-        </div>
+
         <div id="main_content">
       		<div id="join_box">
           	<form  name="member_form" method="post" action="member_modify.php?id=<?=$userid?>">

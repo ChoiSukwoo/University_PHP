@@ -18,9 +18,7 @@
     <?php include "header.php";?>
 </header>  
 <section>
-	<div id="main_img_bar">
-        <img src="./img/main_img.png">
-    </div>
+
    	<div id="board_box">
 	    <h3 class="title">
 			게시판 > 내용보기
