@@ -1,7 +1,7 @@
 <!--해당 페이지에서는 뷰타입을 받은후 뷰타입에 맞는 데이트를 api에서 추출해 뷰에게 전달 이후에 뷰에서 출력-->
     
 <?php 
-    function Viewadater($Viewtype){
+    function Viewadater($Viewtype,$OriCode=""){
 
         $key = "54ade426ec7e8f22e2a3c7a41c4d2316";
         $curl = curl_init();
@@ -32,13 +32,16 @@
                 setView($Viewtype,$curl,$url);
             break;
 
+            case "movie":
+                $data = array("key"=>$key,"movieCd"=> $OriCode);
+                $url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml";
+                $url = sprintf("%s?%s", $url, http_build_query($data));
+                setView($Viewtype,$curl,$url);
+            break;
+
             default:
             break;
         }
-
-        
-    
-
      };
 
      function setView($Viewtype,$curl,$url)

@@ -9,3 +9,12 @@
 .latest span:nth-child(1) { width: 280px; }
 .latest span:nth-child(2) { width: 100px; }
 .latest span:nth-child(3) { width: 100px; }
+#commentInput{width:1000px; height: 300px; float: left;}
+#comment_T{width:1000px; margin-top: 20px; margin-bottom: 15px; border-bottom: 3px solid gray; height: 50px; float: left; font-weight: bold; font-size: 25px;}
+.commentInput{
+    width:1000px; height: 100px; float: left; vertical-align: auto;
+    border: 1px solid gray; border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
