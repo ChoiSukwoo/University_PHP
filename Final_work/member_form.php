@@ -3,8 +3,8 @@
 <head> 
 <meta charset="utf-8">
 <title>PHP 프로그래밍 입문</title>
-<link rel="stylesheet" type="text/css" href="./css/common.css">
-<link rel="stylesheet" type="text/css" href="./css/member.css">
+<link rel="stylesheet" type="text/css" href="./css/common.css?1">
+<link rel="stylesheet" type="text/css" href="./css/member.css?1">
 <script>
    function check_input()
    {
@@ -32,18 +32,6 @@
           return;
       }
 
-      if (!document.member_form.email1.value) {
-          alert("이메일 주소를 입력하세요!");    
-          document.member_form.email1.focus();
-          return;
-      }
-
-      if (!document.member_form.email2.value) {
-          alert("이메일 주소를 입력하세요!");    
-          document.member_form.email2.focus();
-          return;
-      }
-
       if (document.member_form.pass.value != 
             document.member_form.pass_confirm.value) {
           alert("비밀번호가 일치하지 않습니다.\n다시 입력해 주세요!");
@@ -60,8 +48,6 @@
       document.member_form.pass.value = "";
       document.member_form.pass_confirm.value = "";
       document.member_form.name.value = "";
-      document.member_form.email1.value = "";
-      document.member_form.email2.value = "";
       document.member_form.id.focus();
       return;
    }
@@ -107,18 +93,10 @@
 							<input type="password" name="pass_confirm">
 				        </div>                 
 			       	</div>
-			       	<div class="clear"></div>
 			       	<div class="form">
 				        <div class="col1">이름</div>
 				        <div class="col2">
 							<input type="text" name="name">
-				        </div>                 
-			       	</div>
-			       	<div class="clear"></div>
-			       	<div class="form email">
-				        <div class="col1">이메일</div>
-				        <div class="col2">
-							<input type="text" name="email1">@<input type="text" name="email2">
 				        </div>                 
 			       	</div>
 			       	<div class="clear"></div>

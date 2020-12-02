@@ -3,19 +3,13 @@
     $id   = $_POST["id"];
     $pass = $_POST["pass"];
     $name = $_POST["name"];
-    $email1  = $_POST["email1"];
-    $email2  = $_POST["email2"];
-    //email1 과 email2를 합친값을 email변수에 담는다.
-    $email = $email1."@".$email2;
-    //date함수를 이용하여 시간을 받아온다.
-    $regist_day = date("Y-m-d (H:i)");  // 현재의 '년-월-일-시-분'을 저장
 
     //mysql 서버에 연결하여  user1 계정의 sample테이블에 접근
-    $con = mysqli_connect("localhost", "user1", "12345", "moviepj");
+    $con = mysqli_connect("localhost", "user1", "12345", "movie");
 
   // sql 문을 작성한다.
-	$sql = "insert into members(id, pass, name, email, regist_day, level, point) ";
-	$sql .= "values('$id', '$pass', '$name', '$email', '$regist_day', 9, 0)";
+	$sql = "insert into user(UserId, Password	, NickName) ";
+	$sql .= "values('$id', '$pass', '$name')";
 
   //연결된 mysql에 sql문을 실행한다.
 	mysqli_query($con, $sql);  // $sql 에 저장된 명령 실행

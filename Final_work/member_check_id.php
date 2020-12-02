@@ -18,9 +18,9 @@ h3 {   padding-left: 5px;  border-left: solid 5px #edbf07;  }
    if(!$id){ echo("<li>아이디를 입력해 주세요!</li>"); }
    else{
       //mysql 서버에 연결하여  user1 계정의 sample테이블에 접근
-      $con = mysqli_connect("localhost", "user1", "12345", "moviepj");
+      $con = mysqli_connect("localhost", "user1", "12345", "movie");
       // sql 문을 작성한다. 이떄 받아온 id 값을 이용하여 구문을 완성한다.
-      $sql = "select * from members where id='$id'";
+      $sql = "select * from user where UserId='$id'";
       //연결된 mysql에 sql문을 실행한다.
       $result = mysqli_query($con, $sql);
       //실행된 sql문에의해 필터링된 레코드의 수를 $num_record변수에 담는다

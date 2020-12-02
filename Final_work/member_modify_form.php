@@ -5,24 +5,16 @@
 <title>PHP 프로그래밍 입문</title>
 <link rel="stylesheet" type="text/css" href="./css/common.css">
 <link rel="stylesheet" type="text/css" href="./css/member.css">
-<script type="text/javascript" src="./js/member_modify.js"></script>
+<script type="text/javascript" src="./js/member_modify.js?1"></script>
 </head>
 <body> 
 	<header>
     	<?php include "header.php";?>
     </header>
 <?php    
-   	$con = mysqli_connect("localhost", "user1", "12345", "moviepj");
-    $sql    = "select * from members where id='$userid'";
+   	$con = mysqli_connect("localhost", "user1", "12345", "movie");
+    $sql    = "select * from user where userid='$userid'";
     $result = mysqli_query($con, $sql);
-    $row    = mysqli_fetch_array($result);
-
-    $pass = $row["pass"];
-    $name = $row["name"];
-
-    $email = explode("@", $row["email"]);
-    $email1 = $email[0];
-    $email2 = $email[1];
 
     mysqli_close($con);
 ?>
@@ -61,19 +53,10 @@
 				        </div>                 
 			       	</div>
 			       	<div class="clear"></div>
-			       	<div class="form email">
-				        <div class="col1">이메일</div>
-				        <div class="col2">
-							<input type="text" name="email1" value="<?=$email1?>">@<input 
-							       type="text" name="email2" value="<?=$email2?>">
-				        </div>                 
-			       	</div>
-			       	<div class="clear"></div>
 			       	<div class="bottom_line"> </div>
 			       	<div class="buttons">
-	                	<img style="cursor:pointer" src="./img/button_save.gif" onclick="check_input()">&nbsp;
-                  		<img id="reset_button" style="cursor:pointer" src="./img/button_reset.gif"
-                  			onclick="reset_form()">
+					    <a href="#"><img style="cursor:pointer" src="./img/button_save.gif" onclick="check_input()"></a>&nbsp;
+                  		<img id="reset_button" style="cursor:pointer" src="./img/button_reset.gif" onclick="reset_form()">
 	           		</div>
            	</form>
         	</div> <!-- join_box -->

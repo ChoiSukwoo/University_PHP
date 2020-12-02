@@ -2,8 +2,8 @@
     $id   = $_POST["id"];
     $pass = $_POST["pass"];
 
-   $con = mysqli_connect("localhost", "user1", "12345", "moviepj");
-   $sql = "select * from members where id='$id'";
+   $con = mysqli_connect("localhost", "user1", "12345", "movie");
+   $sql = "select * from user where UserId='$id'";
    $result = mysqli_query($con, $sql);
 
    $num_match = mysqli_num_rows($result);
@@ -20,7 +20,8 @@
     else
     {
         $row = mysqli_fetch_array($result);
-        $db_pass = $row["pass"];
+        $db_pass = $row["Password"];
+        echo("<script>alert($db_pass) </script>");
 
         mysqli_close($con);
 
@@ -38,10 +39,8 @@
         else
         {
             session_start();
-            $_SESSION["userid"] = $row["id"];
-            $_SESSION["username"] = $row["name"];
-            $_SESSION["userlevel"] = $row["level"];
-            $_SESSION["userpoint"] = $row["point"];
+            $_SESSION["userid"] = $row["UserId"];
+            $_SESSION["username"] = $row["NickName"];
 
             echo("
               <script>

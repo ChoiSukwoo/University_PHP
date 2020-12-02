@@ -228,7 +228,6 @@
                 };
 
                 echo("
-                    <div style='width : 1000px; height : 51px; border-bottom: 3px solid gray;margin-top:30px;margin-bottom:30px;font-size:35px; font-weight:bold;'>영화 상세</div>
                     <div id='movie_img' class='randomImg movielist_img'></div>
                     <div id='movie_info'>
                         <div class ='movie_title'> $movieNm </div>
