@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 20-11-23 01:36
+-- 생성 시간: 20-12-03 11:09
 -- 서버 버전: 10.4.14-MariaDB
 -- PHP 버전: 7.4.11
 
@@ -18,21 +18,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 데이터베이스: `moviepj`
+-- 데이터베이스: `movie`
 --
 
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `coment`
+-- 테이블 구조 `comment`
 --
 
 CREATE TABLE `comment` (
   `num` int(11) NOT NULL,
-  `id` char(15) NOT NULL,
-  `movie_name` char(10) NOT NULL,
-  `content` text NOT NULL
+  `UserId` char(15) NOT NULL,
+  `movieId` char(10) NOT NULL,
+  `content` text NOT NULL,
+  `movieName` char(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 테이블의 덤프 데이터 `comment`
+--
+
+INSERT INTO `comment` (`num`, `UserId`, `movieId`, `content`, `movieName`) VALUES
+(2, 'woo98070', '20200294', 'sadcecdzc', ''),
+(5, 'woo98070', '20200294', 'zv ev c zzcavav', ''),
+(6, 'woo98070', '20197121', 'dvsdv s wr s', ''),
+(7, 'woo98070', '20197121', 'zcx  zfdzv sv', ''),
+(8, 'woo98070', '20197121', 'bwrvdsvsd sdvewvev', ''),
+(9, 'woo98070', '20197121', 'z evev z ', '');
 
 -- --------------------------------------------------------
 
@@ -42,32 +55,45 @@ CREATE TABLE `comment` (
 
 CREATE TABLE `favorite` (
   `num` int(11) NOT NULL,
-  `id` char(15) NOT NULL,
-  `movie_name` char(10) NOT NULL
+  `UserId` char(15) NOT NULL,
+  `movieId` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 테이블의 덤프 데이터 `favorite`
+--
+
+INSERT INTO `favorite` (`num`, `UserId`, `movieId`) VALUES
+(1, 'woo98070', '20201123'),
+(2, 'woo98070', '20200554');
 
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `members`
+-- 테이블 구조 `user`
 --
 
-CREATE TABLE `members` (
-  `id` char(15) NOT NULL,
-  `pass` char(15) NOT NULL,
-  `name` char(10) NOT NULL,
-  `email` char(80) DEFAULT NULL,
-  `regist_day` char(20) DEFAULT NULL
+CREATE TABLE `user` (
+  `UserId` char(20) NOT NULL,
+  `Password` char(20) NOT NULL,
+  `NickName` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 테이블의 덤프 데이터 `user`
+--
+
+INSERT INTO `user` (`UserId`, `Password`, `NickName`) VALUES
+('woo98070', 'woo98070', '최석우');
 
 --
 -- 덤프된 테이블의 인덱스
 --
 
 --
--- 테이블의 인덱스 `coment`
+-- 테이블의 인덱스 `comment`
 --
-ALTER TABLE `coment`
+ALTER TABLE `comment`
   ADD PRIMARY KEY (`num`);
 
 --
@@ -77,26 +103,20 @@ ALTER TABLE `favorite`
   ADD PRIMARY KEY (`num`);
 
 --
--- 테이블의 인덱스 `members`
---
-ALTER TABLE `members`
-  ADD PRIMARY KEY (`id`);
-
---
 -- 덤프된 테이블의 AUTO_INCREMENT
 --
 
 --
--- 테이블의 AUTO_INCREMENT `coment`
+-- 테이블의 AUTO_INCREMENT `comment`
 --
-ALTER TABLE `coment`
-  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `comment`
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- 테이블의 AUTO_INCREMENT `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

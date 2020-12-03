@@ -3,8 +3,11 @@
 <head> 
 <meta charset="utf-8">
 <title>PHP 프로그래밍 입문</title>
-<link rel="stylesheet" type="text/css" href="./css/common.css">
-<link rel="stylesheet" type="text/css" href="./css/member.css">
+<link rel="stylesheet" type="text/css" href="./css/common.css?3">
+<link rel="stylesheet" type="text/css" href="./css/member.css?6">
+<link rel="stylesheet" type="text/css" href="./css/viewstyle.css?1">
+<link rel="stylesheet" type="text/css" href="./css/randomImg.css?1">
+
 <script type="text/javascript" src="./js/member_modify.js?1"></script>
 </head>
 <body> 
@@ -14,14 +17,17 @@
 <?php    
    	$con = mysqli_connect("localhost", "user1", "12345", "movie");
     $sql    = "select * from user where userid='$userid'";
-    $result = mysqli_query($con, $sql);
-
+	$result = mysqli_query($con, $sql);
+	$row = mysqli_fetch_array($result);
+	$pass = $row['Password'];
+	$name = $row['NickName'];
     mysqli_close($con);
 ?>
 	<section>
 
-        <div id="main_content">
-      		<div id="join_box">
+		<div id="main_content" style="height: 600px;">
+		
+		<div id="join_box">
           	<form  name="member_form" method="post" action="member_modify.php?id=<?=$userid?>">
 			    <h2>회원 정보수정</h2>
     		    	<div class="form id">
@@ -59,12 +65,25 @@
                   		<img id="reset_button" style="cursor:pointer" src="./img/button_reset.gif" onclick="reset_form()">
 	           		</div>
            	</form>
-        	</div> <!-- join_box -->
-        </div> <!-- main_content -->
-	</section> 
-	<footer>
+		</div> <!-- join_box -->
+		<div id="user_comment">
+			<div type=text id=user_comment_title> 내가 작성한 댓글 </div>
+			<?php
+			    include_once 'View.php'; 
+				makeView("userComment",$userid); 
+			?>
+		</div>
+		<div id="user_favorite">
+			a
+		</div>
+		
+		<footer>
     	<?php include "footer.php";?>
-    </footer>
+    	</footer>
+
+		</div> <!-- main_content -->
+	</section> 
+
 </body>
 </html>
 

@@ -243,3 +243,47 @@
     font-size: 17px;
     float: left;
 }
+
+.comment{
+    width: 1000px;
+    height: auto;
+    min-height: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    float: left;
+
+}
+.comment_img{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: gray;
+    float: left;
+}
+
+.comment_id{
+    height: 20px;
+    width: 800px;
+    float: left;
+}
+
+.comment_content{
+    min-height: 30px;
+    height: auto;
+    width: 950px;
+    float: left;
+}
+
+.delet_comment{
+    height: 20px;
+    width: 150px;
+    float: left;
+    color: red;
+}
+
+#user_favorite{
+    height: 200;
+    width: 400px;
+    float: right;
+    background-color: gray;
+}

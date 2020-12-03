@@ -2,7 +2,7 @@
 #main_content { position: relative; width: 1000px; height: 400px; margin: 0 auto; }
 
 /* 가입 양식 폼 */
-#join_box {	width: 600px;	margin: 0 auto; }
+#join_box {	width: 600px;	margin: 0 auto; float: left;}
 #join_box h2 { 	border-bottom: solid 1px #dddddd; padding-top: 50px; }
 #join_box .col1 { float: left;	width: 110px; margin-top: 4px; }
 #join_box .col2 { float: left;	width: 400px; }
@@ -14,3 +14,7 @@
 #join_box input[name=email2] { width: 275px; }
 #join_box .bottom_line { margin-top: 10px;	border-bottom: solid 1px #cccccc; }
 #join_box .buttons { text-align: right;	margin: 20px 100px 0 0; }
+#user_comment{width: 600px;	margin: 0 auto; float: left;}
+#user_comment_title{border-bottom: solid 1px #dddddd; padding-top: 30px; font-size: 21px; font-family: "돋움"; font-weight: bold;}
+.user_comment_id{width: 400px;height: 20px; float: left;}
+.user_comment_contnet{width: 400px;height: 30px; float: left;}

@@ -4,7 +4,7 @@
 </script>
 
 <?php
-    function makeView($Viewtype,$object){
+    function makeView($Viewtype,$object,$value=""){
         switch($Viewtype){
             case "main_daily":
                 foreach ($object->xpath('//dailyBoxOffice') as $dailyBoxOffice) {
@@ -246,6 +246,63 @@
                     </div>
                 ");
             break;
+
+            
+            case "comment":
+                $con = mysqli_connect('localhost', 'user1', '12345', 'movie');
+                $sql1 = "select * from comment  where movieId = '$object'";
+                $result = mysqli_query($con, $sql1);
+
+                while( $row = mysqli_fetch_array($result) )
+                {
+                    $loginid = $_SESSION["userid"];
+                    $userid = $row['UserId'];
+                    $content =$row['content'];
+                    $movieId =$row['movieId'];
+                    $num =$row['num'];
+                    echo("
+                        <div class='comment'>
+                            <div class ='comment_img'></div>
+                            <div class ='comment_id'>$userid</div>
+                    ");
+                    if($userid == $loginid){
+                    echo("  
+                            <a href='comment_delet.php?code=".$movieId."&num=".$num."'><div class=delet_comment>댓글삭제</div></a>
+                        ");
+                    }
+                    echo("
+                            <div class ='comment_content'>$content</div>
+                        </div>
+                    ");
+                }
+                echo("<footer> ");      
+                    include 'footer.php';
+                echo("</footer>");
+            break;
+            case "userComment":
+                $con = mysqli_connect('localhost', 'user1', '12345', 'movie');
+                $sql1 = "select * from comment  where UserId = '$object'";
+                $result = mysqli_query($con, $sql1);
+                while( $row = mysqli_fetch_array($result) )
+                {
+                    $userid = $row['UserId'];
+                    $content =$row['content'];
+                    $movieId =$row['movieId'];
+                    $num =$row['num'];
+
+                    echo("
+                    <div class='comment'>
+                        <div class ='comment_img randomImg main_img'></div>
+                        <div class ='user_comment_id'>$movieId</div>
+                        <a href='user_comment_delet.php?code=".$movieId."&num=".$num."'><div class=delet_comment>댓글삭제</div></a>
+                        <div class ='comment_content'>$content</div>
+                    </div>
+                ");
+
+                }
+            
+            break;
+
             default:
                 break;
         }

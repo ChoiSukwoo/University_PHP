@@ -8,9 +8,9 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="./css/randomImg.css?1">
-<link rel="stylesheet" type="text/css" href="./css/viewstyle.css?1">
-<link rel="stylesheet" type="text/css" href="./css/common.css?1">
-<link rel="stylesheet" type="text/css" href="./css/main.css?2">
+<link rel="stylesheet" type="text/css" href="./css/viewstyle.css?3">
+<link rel="stylesheet" type="text/css" href="./css/common.css?3">
+<link rel="stylesheet" type="text/css" href="./css/main.css?4">
 
 
 
@@ -19,87 +19,50 @@
 <body> 
     <header>
         <?php include "header.php";?>
-        <?php include "./js/movie.php";?>
     </header>
-
-
-    <?php
-        $code = $_GET["code"];
-
-   	    $con = mysqli_connect("localhost", "user1", "12345", "movie");
-        $sql    = "select * from favorite where userid='$userid' and movieId = '$code' ";
-        $result = mysqli_query($con, $sql);
-        $row    = mysqli_fetch_array($result);
-        mysqli_close($con);
-    ?>
-
 
 	<section>
         <div id="main_content" style="height: 620px;">
             <div id="movie_title">영화 상세</div>
-
+            
             <?php
-                if(!$row){
-                    
-                    echo("
-                    <a href='#'><div id ='favorite' onclick='addFavorite()' value='0' style='color: black;'>★</div></a>");
-                }else{
-                    echo("<a href='#'><div id ='favorite' onclick='deleteFavorite()' value='1' style='color: yellow;'>★</div></a>");
-                }
-            ?>
-            <?php
+                $code = $_GET["code"];
+                if (isset($_SESSION["userid"])){
+                    $userid = $_SESSION["userid"];
+   	                $con = mysqli_connect("localhost", "user1", "12345", "movie");
+                    $sql    = "select * from favorite where userid='$userid' and movieId = '$code' ";
+                    $result = mysqli_query($con, $sql);
+                    $row    = mysqli_fetch_array($result);
+                    mysqli_close($con);
+                    if(!$row){
+                        echo("<a href='favorite_change.php?code=".$code."&value=".'0'."'><div id='favorite' style='color: black;'>★</div></a></form>");
+                    }else{
+                        echo("<a href='favorite_change.php?code=".$code."&value=".'1'."'><div id='favorite' style='color: yellow;'>★</div></a></form>");
+                    }
+                }   
                 include_once 'ViewAdapter.php'; 
                 Viewadater("movie",$code) ; 
             ?>
-            <div id="commentInput">
-                <div id="comment_T">Comment</div>
-                <div style="width : 150px; height:20px; float:left;" >코멘트 입력</div>
-                <button style="width : 150px; height:20px; float:right;" >등록하기</button>
-                <input type="text" class='commentInput'>
-        
-            </div>
+            <form method="$_POST" action='addComment.php' id="commentInput">
+                    <div id="comment_T">Comment</div>
+                    <div style="width : 150px; height:20px; float:left;" >코멘트 입력</div>
+                    <input type="submit" style="width : 150px; height:20px; float:right;" value="등록하기">
+                    <input type="text" name="commentInput" class='commentInput'>
+                    <input type="hidden" name="code" value="<?=$code?>">
+            </form>
+            <?php
+                makeView("comment",$code) ; 
+            ?>
+            
+
         </div>
 
 	</section> 
-	<footer>
-    	<?php include "footer.php";?>
-    </footer>
+          
+
+            
+    
 </body>
 </html>
 
 
-<?php
-echo("    
-    <script>
-    function addFavorite(  ){
-");
-            $code = $_GET["code"];
-            $userid = $_SESSION["userid"];
-            $con = mysqli_connect('localhost', 'user1', '12345', 'movie');
-            $sql1 = 'insert into favorite(userid, movieId) ';
-            $sql1 .= "values('$userid', '$code')'";
-            mysqli_query($con, $sql1);
-            mysqli_close($con);
-echo("
-            document.getElementById('favorite').style.color = 'yellow'
-    }
-");
-echo("    
-    function deleteFavorite(  ){
-");
-                $code = $_GET["code"];
-                $userid = $_SESSION["userid"];
-                $con = mysqli_connect('localhost', 'user1', '12345', 'movie');
-                $sql1 = 'insert into favorite(userid, movieId) ';
-                $sql1 .= "values('$userid', '$code')'";
-                mysqli_query($con, $sql1);
-                mysqli_close($con);
-echo("
-            document.getElementById('favorite').style.color = 'Black'
-    }
-");
-echo("    
-    </script>
-");
-
-?>
