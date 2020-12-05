@@ -13,6 +13,13 @@
 <link rel="stylesheet" type="text/css" href="./css/main.css?">
 
 
+<?php   
+        include_once 'mvvm/xmlExtract.php'; 
+        include_once 'mvvm/viewAdapter.php'; 
+        $main_daily=extract_xml('main_daily') ;
+        $main_weekly=extract_xml('main_weekly') ;
+?> 
+
 </head>
 <body> 
 	<header>
@@ -22,16 +29,11 @@
 	<div id="main_content">
         <div class="latest">
             <h4>일일 박스오피스</h4>
-                <?php   include 'ViewAdapter.php'; 
-                        Viewadater("main_daily") ;
-                ?> 
-
+            <?php main_daily_adapter($main_daily)?>
         </div>
         <div class="latest">
             <h4>지난주 박스오피스</h4>
-            <?php   include_once 'ViewAdapter.php'; 
-                Viewadater("main_weekly") ; 
-            ?> 
+            <?php main_weekly_adapter($main_weekly)?>
         </div>
 
     </div>

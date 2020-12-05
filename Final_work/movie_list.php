@@ -12,17 +12,21 @@
 <link rel="stylesheet" type="text/css" href="./css/common.css?2">
 <link rel="stylesheet" type="text/css" href="./css/main.css?2">
 
+
 <script>
    function movie_name(type) {
         name = document.getElementById("search_input").value;
-        location.href="movie_list.php?type="+type+"&search="+name ; 
+        if(name!=''){
+            location.href="movie_list.php?type="+type+"&search="+name ; 
+        }else{
+            location.href="movie_list.php?type="+type; 
+        }
     }
 
-    function movie__page(type) {
+    function change_movie_page(type) {
         data = "movie_list.php?type="+type
-        name = document.getElementById("search_input").value
-        if(name!=''){
-            data=data+"&search="+name ; 
+        if(document.getElementById("search_input_h").value!=''){
+            data=data+"&search="+document.getElementById("search_input_h").value
         }
         page = document.getElementById("inputtext").value
         data=data+"&page="+page
@@ -31,9 +35,21 @@
 </script>
 
 <?php 
+    include_once 'mvvm/xmlExtract.php'; 
+    include_once 'mvvm/viewAdapter.php'; 
+
     if(isset($_GET["page"])){$page = $_GET["page"];}else{$page='1';}; 
     if(isset($_GET["search"])){$search = $_GET["search"];}else{$search='';}; 
     $type = $_GET["type"];
+    $result = extract_xml($type,$page,$search) ;
+    //페이지수가 복수일경우 페이지 계산
+    if(isset($result->totCnt)){
+        $totalpage = $result->totCnt;
+        $totalpage = ($totalpage-($totalpage%10))/10+1;
+    }else{
+        $totalpage = 1;
+    }
+    
 ?>
 
 </head>
@@ -42,27 +58,24 @@
     	<?php include "header.php";?>
     </header>
 	<section>
-
         <div id="main_content">
-
             <?php if($type=="allmovie"){ ?>
                 <form name="mvname" id="search_box">
                     <div id = search_title> 영화이름 검색창 </div>
-                    <input type="text" name="name" id="search_input" value> <input type="button" value="검색" onclick="movie_name('<?=$type?>')" id="search_button">
+                    <input type="text" name="name" id="search_input" value="<?=$search?>"> <input type="button" value="검색" onclick="movie_name('<?=$type?>')" id="search_button">
+                    <input  type='text' value="<?=$search?>" id='search_input_h' style='display:none'>
                 </form>
             <?php } ?>
+
             <div style="float: left;">
-            <?php
-                include_once 'ViewAdapter.php'; 
-                $result = Viewadater("$type",$page,$search) ; 
-            ?>
+                <?= movie_list_adapter($type,$result);?>
             </div>
         </div>
         <!--전체영화 보이길때 페이지 선택창-->
         <?php if($type=="allmovie"){ ?>
             <form name="mvpage" style="margin:auto; width:160px; margin-bottom : 20px;">
-                <input id="inputtext" name="page" type="text" value="<?=$page?>"> / <?= ($result-($result%10))/10+1 ?> 
-                <input type="button" value="확인" onclick="movie__page('<?=$type?>')"> 
+                <input id="inputtext" name="page" type="text" value="<?=$page?>"> / <?=$totalpage?> 
+                <input type="button" value="확인" onclick="change_movie_page('<?=$type?>')"> 
             </form>
         <?php } ?>
 	</section> 

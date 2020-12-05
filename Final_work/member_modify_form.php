@@ -22,7 +22,8 @@
 		comment = document.getElementById("comment_page_h").value
 		favorite = document.getElementById("favorite_page").value
         location.href="member_modify_form.php?"+"&commentPage="+comment+"&favoritePage="+favorite
-    }
+	}
+	function movie_page(code) {location.href="movie.php?code="+code ; }
 </script>
 
 
@@ -43,6 +44,27 @@
 	$row = mysqli_fetch_array($result);
 	$pass = $row['Password'];
 	$name = $row['NickName'];
+
+	$sql = "select COUNT(*) from comment";
+	$result = mysqli_query($con, $sql);
+	$CommentpageNum = mysqli_fetch_array($result)['COUNT(*)'];
+	$CommentpageNum = ($CommentpageNum-($CommentpageNum%5))/5+1 ;
+	$page1 = ($commentPage-1)*5;
+	$page2 = ($commentPage)*5;	
+
+	$sql = "select * from ( select row_number() over (order by num ASC) AS rownumber,num ,content, movieId,movieName FROM comment WHERE UserId = '$userid' )as foo WHERE rownumber>$page1 and rownumber<=$page2";
+	$commentResult = mysqli_query($con, $sql);
+
+	$sql = "select COUNT(*) from favorite";
+	$result = mysqli_query($con, $sql);
+	$favoritepageNum = mysqli_fetch_array($result)['COUNT(*)'];
+	$favoritepageNum = ($favoritepageNum-($favoritepageNum%10))/10+1 ;
+	$page1 = ($favoritePage-1)*10;
+	$page2 = ($favoritePage)*10;	
+
+	$sql = "select * from ( select row_number() over (order by num ASC) AS rownumber,num , movieId,movieName FROM favorite WHERE UserId = '$userid' )as foo WHERE rownumber>$page1 and rownumber<=$page2";
+	$favoriteResult = mysqli_query($con, $sql);
+
 	mysqli_close($con);
 ?>
 	<section>
@@ -91,21 +113,49 @@
 		<div id="user_comment">
 			<div type=text id=user_comment_title> 내가 작성한 댓글 </div>
 			<?php
-			    include_once 'View.php'; 
-				userComment_view($userid,$commentPage); 
+			while( $row = mysqli_fetch_array($commentResult) ){
+				$content =$row['content'];
+				$movieId =$row['movieId'];
+				$movieName =$row['movieName'];
+				$num =$row['num'];
 			?>
+				<div class='comment' onClick='movie_page(<?=$movieId?>)'>
+					<div class ='comment_img randomImg main_img'></div>
+					<div class ='user_comment_id'><?=$movieName?></div>
+					<a href='function/user_comment_delet.php?num=<?=$num?>'><div class=delet_comment>댓글삭제</div></a>
+					<div class ='comment_content'><?=$content?></div>
+				</div>
+			<?php } ?>
+			<form name = 'user_commnet_page' id='user_commnet_page'>
+				<input id='comment_page' type='text' value='<?=$commentPage?>'>
+				<div style='width:20px;float:left'>  /  <?=$CommentpageNum?> </div>
+				<input class='comment_button' type='button' value='확인' onclick='user_comment_pagechange()'> 
+				<input  type='text' value='<?=$commentPage?>' id='comment_page_h' style='display:none'>
+				</form>
 		</div>
-		</div>
+	</div>
 
 		<div id="user_favorite">
 			<div type=text id=user_favorite_title> 즐겨찾기 목록 </div>
 			<?php
-			    include_once 'View.php'; 
-				userfavorite_view($userid,$favoritePage); 
+			while( $row = mysqli_fetch_array($favoriteResult) ){
+				$movieId =$row['movieId'];
+				$movieName =$row['movieName'];
+				$num =$row['num'];
 			?>
+    	        <div class='comment' onClick='movie_page(<?=$movieId?>)'>
+        	        <div class ='comment_img randomImg main_img'></div>
+            	    <div class ='user_comment_id'><?=$movieName?></div>
+                	<a href='user_comment_delet.php?num=<?=$num?>'><div class=delet_comment>즐겨찾기 삭제</div></a>
+            	</div>
+			<?php } ?>
+            <form name = 'user_favorite_page' id='user_commnet_page'>
+                <input id='favorite_page' type='text' value='<?=$favoritePage?>'>
+                <div style='width:20px;float:left'>  /  <?=$favoritepageNum?> </div>
+                <input class='comment_button' type='button' value='확인' onclick='user_favorite_pagechange()'> 
+                <input  type='text' value='<?=$favoritePage?>' id='favorite_page_h' style='display:none'>
+            </form>
 		</div>
-
-		</div> <!-- main_content -->
 
 	</section> 
 	<footer>

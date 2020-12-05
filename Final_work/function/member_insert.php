@@ -20,7 +20,7 @@
   //echo "" 없이 스크립트문을실행 시키려하면 해석하지못한다.
     echo "
 	      <script>
-	          location.href = 'index.php';
+	          location.href = 'http://localhost/University_PHP/Final_work/index.php';
 	      </script>
 	  "
 ?>

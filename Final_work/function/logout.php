@@ -5,7 +5,7 @@
   
   echo("
        <script>
-          location.href = 'index.php';
+          location.href = 'http://localhost/University_PHP/Final_work/index.php';
          </script>
        ");
 ?>

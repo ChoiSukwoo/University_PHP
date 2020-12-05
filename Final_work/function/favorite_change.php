@@ -1,9 +1,9 @@
 <?php
     session_start();
     $userid = $_SESSION["userid"];
-    $value = $_POST['value'];
-    $code = $_POST['code'];
-    $name = $_POST['name'];
+    $value = $_GET['value'];
+    $code = $_GET['code'];
+    $name = $_GET['name'];
     if($value == 0){
         $con = mysqli_connect('localhost', 'user1', '12345', 'movie');
         $sql1 = 'insert into favorite(userid, movieId,movieName) ';
