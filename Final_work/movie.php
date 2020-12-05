@@ -12,7 +12,12 @@
 <link rel="stylesheet" type="text/css" href="./css/common.css?3">
 <link rel="stylesheet" type="text/css" href="./css/main.css?4">
 
+<script>
+    function submit(){
+        document.favorite.submit();
+    }
 
+</script>
 
 
 </head>
@@ -34,24 +39,45 @@
                     $result = mysqli_query($con, $sql);
                     $row    = mysqli_fetch_array($result);
                     mysqli_close($con);
-                    if(!$row){
-                        echo("<a href='favorite_change.php?code=".$code."&value=".'0'."'><div id='favorite' style='color: black;'>★</div></a></form>");
-                    }else{
-                        echo("<a href='favorite_change.php?code=".$code."&value=".'1'."'><div id='favorite' style='color: yellow;'>★</div></a></form>");
-                    }
-                }   
-                include_once 'ViewAdapter.php'; 
-                Viewadater("movie",$code) ; 
             ?>
-            <form method="$_POST" action='addComment.php' id="commentInput">
-                    <div id="comment_T">Comment</div>
-                    <div style="width : 150px; height:20px; float:left;" >코멘트 입력</div>
-                    <input type="submit" style="width : 150px; height:20px; float:right;" value="등록하기">
-                    <input type="text" name="commentInput" class='commentInput'>
+                    <form method="POST" action= favorite_change.php name="favorite">
                     <input type="hidden" name="code" value="<?=$code?>">
-            </form>
             <?php
-                makeView("comment",$code) ; 
+                    if(!$row){
+            ?>
+                            <input type="hidden" name="value" value="0">
+                            <div onclick="submit()" id='favorite' style='color: black;'>★</div></a>
+
+            <?php   }else{?>
+
+                            <input type="hidden" name="value" value="1">
+                            <div onclick="submit()" id='favorite' style='color: yellow;'>★</div></a>
+            <?php
+                    }
+                            include_once 'ViewAdapter.php'; 
+                            $f_result=Viewadater("movie",$code);
+            ?>
+                            <input type="hidden" name="name" value="<?=$f_result?>">
+                        </form>
+
+                        <form method="$_POST" action='addComment.php' id="commentInput">
+                            <div id="comment_T">Comment</div>
+                            <div style="width : 150px; height:20px; float:left;" >코멘트 입력</div>
+                            <input type="submit" style="width : 150px; height:20px; float:right;" value="등록하기">
+                            <input type="text" name="commentInput" class='commentInput'>
+                            <input type="hidden" name="code" value="<?=$code?>">
+                            <input type="hidden" name="name" value="<?=$f_result?>">
+
+                        </form>
+            <?php        
+                }else{
+                    include_once 'ViewAdapter.php'; 
+                    Viewadater("movie",$code);
+                }
+            ?>
+
+            <?php
+                comment_view($code) ; 
             ?>
             
 
@@ -59,7 +85,9 @@
 
 	</section> 
           
-
+    <footer>      
+        <?php include 'footer.php';?>
+    </footer>
             
     
 </body>

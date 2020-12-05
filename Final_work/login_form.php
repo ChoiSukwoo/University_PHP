@@ -3,7 +3,7 @@
 <head> 
 <meta charset="utf-8">
 <title>PHP 프로그래밍 입문</title>
-<link rel="stylesheet" type="text/css" href="./css/common.css">
+<link rel="stylesheet" type="text/css" href="./css/common.css?2">
 <link rel="stylesheet" type="text/css" href="./css/login.css">
 <script type="text/javascript" src="./js/login.js"></script>
 </head>
@@ -28,12 +28,14 @@
                   	</div>		    	
            		</form>
         		</div> <!-- login_form -->
-    		</div> <!-- login_box -->
+			</div> <!-- login_box -->
+
         </div> <!-- main_content -->
 	</section> 
 	<footer>
     	<?php include "footer.php";?>
-    </footer>
+	</footer>
+
 </body>
 </html>
 

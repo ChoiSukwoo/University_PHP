@@ -35,7 +35,7 @@
                 <li><a href="index.php">HOME</a></li>
                 <li><a href="movie_list.php?type=daily">일일 박스 오피스</a></li>                                
                 <li><a href="movie_list.php?type=weekly">지난주 박스 오피스</a></li>
-                <li><a href="movie_list.php?type=daily">전체 박스 오피스</a></li>
+                <li><a href="movie_list.php?type=allmovie">전체 박스 오피스</a></li>
             </ul>
         </div>
 

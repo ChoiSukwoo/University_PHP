@@ -26,7 +26,7 @@ a:active { text-decoration:none; color: #222222; }
 #main_img_bar { height: 230px; text-align: center; background-color: #2092aa; }
 #main_img_bar img { margin-top: 30px; }
 /* 하단 푸터 */
-footer { height: 100px; background-color: #2c2a29;float: left;}
+footer { height: 100px; background-color: #2c2a29;float: left; width: 100%;}
 #footer_content { position: relative; width: 1000px; margin: 0 auto; color: #dddddd; }
 #footer_logo { position: absolute; top: 30px; left: 50px; font-size: 16px; }
 #footer_logo span { color: yellow; }

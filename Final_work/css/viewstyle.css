@@ -180,6 +180,15 @@
     word-break:break-all;
     font-size: 15px;
 }
+
+.movielist_audiCnt1{
+    width : 178px ; 
+    height : 35px; 
+    margin-left:4px ;
+    float: left;
+    word-break:break-all;
+    font-size: 15px;
+}
 .movielist_audiChange{
     width : 178px ; 
     height : 20px; 
@@ -282,8 +291,90 @@
 }
 
 #user_favorite{
-    height: 200;
     width: 400px;
-    float: right;
+    float: left;
+    padding-top: 50PX;;
+}
+#user_favorite_title{
+    font-family: "돋움";
+    width: 400px;
+    border-bottom:1px solid #dddddd;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+
+.favorite_img{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
     background-color: gray;
+    float: left;
+}
+
+.user_favorite_id{
+    height: 50px;
+    width: 250px;
+    float: left;
+}
+
+.delet_comment{
+    height: 20px;
+    width: 100px;
+    float: left;
+    color: red;
+}
+#inputtext{
+    width: 50px;
+}
+
+#search_box{
+    margin:auto; 
+    width:1000px; 
+    margin-bottom : 20px;
+    float: left;
+}
+
+#search_title{
+    width: 1000px;
+    padding-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 15px;
+    float: left;
+}
+
+#search_input{
+    margin-left: 250px;
+    width: 396px;
+    height: 30px;
+    font-size: 25px;
+    float: left;
+}
+
+#search_button{
+    margin-left: 10px;
+    width: 80px;
+    height: 34px;
+    float: left;
+}
+
+#user_commnet_page{
+    float: left;
+    width: 600px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+#comment_page{
+    float: left;
+    width: 50px;
+}
+.comment_button{
+    float: left;
+    width: 50px;
+}
+#favorite_page{
+    float: left;
+    width: 50px;
 }

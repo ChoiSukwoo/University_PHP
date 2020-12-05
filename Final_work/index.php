@@ -20,23 +20,24 @@
     </header>
 	<section>
 	<div id="main_content">
-            <div class="latest">
-                <h4>일일 박스오피스</h4>
-                    <?php   include 'ViewAdapter.php'; 
-                            Viewadater("main_daily") ;
-                    ?> 
+        <div class="latest">
+            <h4>일일 박스오피스</h4>
+                <?php   include 'ViewAdapter.php'; 
+                        Viewadater("main_daily") ;
+                ?> 
 
-            </div>
-            <div class="latest">
-                <h4>지난주 박스오피스</h4>
-                    <?php   include_once 'ViewAdapter.php'; 
-                            Viewadater("main_weekly") ; 
-                    ?> 
-            </div>
         </div>
-	</section> 
-	<footer>
-    	<?php include "footer.php";?>
+        <div class="latest">
+            <h4>지난주 박스오피스</h4>
+            <?php   include_once 'ViewAdapter.php'; 
+                Viewadater("main_weekly") ; 
+            ?> 
+        </div>
+
+    </div>
+    </section> 
+    <footer>
+        <?php include "footer.php";?>
     </footer>
 </body>
 </html>
