@@ -46,6 +46,7 @@
             include_once 'mvvm/xmlExtract.php'; 
             $code = $_GET["code"];
 
+            $login = false;
             if (isset($_SESSION["userid"])){
                 $userid = $_SESSION["userid"];
    	            $con = mysqli_connect("localhost", "user1", "12345", "movie");
@@ -55,6 +56,7 @@
                 $result1 = mysqli_query($con, $sql1);
                 $row    = mysqli_fetch_array($result);
                 mysqli_close($con);
+                $login=true;
             }
 
             $xmlResult = extract_xml("movie",$code);
@@ -105,9 +107,9 @@
             <div id="movie_title">영화 상세</div>
 
             <!--로그인 중일떄만 즐겨찾기가능-->
-            <?php   if(!$row){?>
+            <?php   if($login && !$row){?>
                 <div onclick="change_favorite('<?=$code?>',0,'<?=$name?>')" id='favorite' style='color: black;'>★</div></a>
-            <?php   }else if($row) {?>
+            <?php   }else if( $login ==true && $row) {?>
                 <div onclick="change_favorite('<?=$code?>',1,'<?=$name?>')" id='favorite' style='color: yellow;'>★</div></a>
             <?php   }?>
 
@@ -133,14 +135,14 @@
             <div id="comment_T">Comment</div>
 
             <!--로그인 중일떄만 코멘트입력가능-->
-            <?php if(isset($userid)){?>
+            <?php if($login){?>
             <div id="commentInput">
                 <div style="width : 150px; height:20px; float:left;" >코멘트 입력</div>
                 <input type="button" style="width : 150px; height:20px; float:right;" value="등록하기" onclick="add_comment('<?=$code?>','<?=$name?>')">
                 <input type="text" id="commentInputValue" class='commentInput'>
                 <input type="hidden" name="code" value="<?=$code?>">
             </div>
-            <?php } 
+            <?php  
                 while( $row1 = mysqli_fetch_array($result1) ){
                     $commentid = $row1['UserId'];
                     $content =$row1['content'];
@@ -151,11 +153,12 @@
                         <div class ='comment_img'></div>
                         <div class ='comment_id'><?=$commentid?></div>
             <?php   if($userid == $commentid){?>    
-                        <a href='deletComment.php?code=".$movieId."&num=".$num."'><div class=delet_comment>댓글삭제</div></a>
+                        <a href='function/deletComment.php?code=<?=$movieId?>&num=<?=$num?>'><div class=delet_comment>댓글삭제</div></a>
             <?php   }?>
                         <div class ='comment_content'><?=$content?></div>
                     </div>
-            <?php } ?>
+            <?php }
+            } ?>
         </div>
 
 	</section> 

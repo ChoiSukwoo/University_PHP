@@ -17,3 +17,4 @@
     </script>
   ");
 ?>
+function/deletComment.php?code

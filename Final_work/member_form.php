@@ -66,7 +66,7 @@
 	<section>
         <div id="main_content">
       		<div id="join_box">
-          	<form  name="member_form" method="post" action="member_insert.php">
+          	<form  name="member_form" method="post" action="function/member_insert.php">
 			    <h2>회원 가입</h2>
     		    	<div class="form id">
 				        <div class="col1">아이디</div>

@@ -146,7 +146,7 @@
     	        <div class='comment' onClick='movie_page(<?=$movieId?>)'>
         	        <div class ='comment_img randomImg main_img'></div>
             	    <div class ='user_comment_id'><?=$movieName?></div>
-                	<a href='user_comment_delet.php?num=<?=$num?>'><div class=delet_comment>즐겨찾기 삭제</div></a>
+                	<a href='function/user_favorite_delet.php?num=<?=$num?>'><div class=delet_comment>즐겨찾기 삭제</div></a>
             	</div>
 			<?php } ?>
             <form name = 'user_favorite_page' id='user_commnet_page'>
